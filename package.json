@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@garchicms/garchi-node-sdk": "^0.0.8",
+    "@garchicms/garchi-node-sdk": "^0.0.9",
     "@tailwindcss/postcss": "^4.3.0",
     "@types/node": "25.9.1",
     "@types/react": "19.2.15",
