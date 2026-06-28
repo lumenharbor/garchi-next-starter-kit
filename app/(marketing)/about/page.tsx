@@ -4,7 +4,6 @@ const steps = [
   { num: "01", text: "Provide your api key in ", code: ".env" },
   { num: "02", text: "Create your first page on ", link: { href: "https://garchi.co.uk", label: "Garchi CMS" } },
   { num: "03", text: "Check out ", code: "components/garchi", suffix: " folder for example components" },
-  { num: "04", text: "Check out ", code: "types/garchi.d.ts", suffix: " for types" },
   { num: "05", text: "Check out ", code: "utils/garchi.ts", suffix: " for helper functions" },
 ]
 

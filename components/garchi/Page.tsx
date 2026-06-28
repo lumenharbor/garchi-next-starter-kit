@@ -1,26 +1,23 @@
 // server component
 
-import { garchi } from "@/utils/garchi"
-import GarchiComponent from "./GarchiComponent"
+import GarchiComponent from "./GarchiComponent";
+import { getPage } from "@/utils/page";
+import JsonLd from "./JsonLd";
 
 type Props = {
-    slug: string
-}
+  slug: string;
+};
 
-export default async function Page({slug}: Props) {
+export default async function Page({ slug }: Props) {
+  const page = await getPage(slug);
 
 
-  const page = await garchi.headless.getPage({
-    slug,
-    space_uid: "your space uid",
-    mode: "draft",
-  })
-   
   return (
     <>
       {page.sections?.map((section, index) => (
         <GarchiComponent key={index} section={section} />
       ))}
+      <JsonLd jsonLd={page.json_ld} />
     </>
-  )
+  );
 }

@@ -3,7 +3,7 @@ import GarchiComponent from "./GarchiComponent"
 
 type Props = {
   cols?: number | string
-  subSections?: GarchiSection[]
+  subsections?: GarchiSection[]
   [x: string]: any
 }
 
@@ -15,7 +15,7 @@ const lgColsMap: Record<number, string> = {
   5: "lg:grid-cols-5",
 }
 
-export default function GridLayout({ cols = 3, subSections, ...props }: Props) {
+export default function GridLayout({ cols = 3, subsections, ...props }: Props) {
   const n = Math.min(5, Math.max(1, Number(cols) || 1))
   const lgClass = lgColsMap[n]
 
@@ -24,7 +24,7 @@ export default function GridLayout({ cols = 3, subSections, ...props }: Props) {
       className={`grid gap-4 grid-cols-1 md:grid-cols-2 ${lgClass}`}
       {...props}
     >
-      {subSections?.map((section) => (
+      {subsections?.map((section) => (
         <GarchiComponent key={section.id} section={section} />
       ))}
     </div>

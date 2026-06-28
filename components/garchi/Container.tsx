@@ -5,7 +5,7 @@ type Size = "small" | "medium" | "large" | "extra large" | "extra-large"
 
 type Props = {
   size?: Size
-  subSections?: GarchiSection[]
+  subsections?: GarchiSection[]
   [x: string]: any
 }
 
@@ -19,14 +19,14 @@ const sizeMap: Record<string, string> = {
 
 export default function Container({
   size = "large",
-  subSections,
+  subsections,
   ...props
 }: Props) {
   const maxWidth = sizeMap[size] || sizeMap.large
 
   return (
     <div className={`mx-auto w-full px-4 ${maxWidth}`} {...props}>
-      {subSections?.map((section) => (
+      {subsections?.map((section) => (
         <GarchiComponent key={section.id} section={section} />
       ))}
     </div>

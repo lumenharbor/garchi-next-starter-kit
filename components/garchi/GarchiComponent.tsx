@@ -23,7 +23,7 @@ export default function GarchiComponent({ section }: Props) {
     
     const componentProps = section?.children ? {
         ...section.props,
-        subSections: section.children
+        subsections: section.children
     } : section.props
 
     return (
