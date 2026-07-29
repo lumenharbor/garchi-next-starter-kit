@@ -19,7 +19,6 @@ an existing one.
 git clone https://github.com/lumenharbor/garchi-next-starter-kit.git
 cd garchi-next-starter-kit
 npm install
-cp .env.example .env.local
 ```
 
 Add your Garchi credentials to `.env.local`:
