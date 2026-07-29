@@ -1,46 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Garchi CMS — Next.js Starter Kit
 
-## Getting Started
+A Next.js starter kit for [Garchi CMS](https://garchi.co.uk), a cloud-based
+headless CMS with a full-write MCP server. Clone it, add an API key, and you
+have a Next.js app rendering content from Garchi — with the option of letting
+an AI agent author that content for you.
 
-First, run the development server:
+Use it as the base for a new project, or as a reference for wiring Garchi into
+an existing one.
+
+## Requirements
+
+- Node.js 20+
+- A free Garchi account — [sign up](https://garchi.co.uk)
+
+## Quick start
+
+```bash
+git clone https://github.com/lumenharbor/garchi-next-starter-kit.git
+cd garchi-next-starter-kit
+npm install
+cp .env.example .env.local
+```
+
+Add your Garchi credentials to `.env.local`:
+
+```env
+GARCHI_API_URL=https://garchi.co.uk/api/v2
+GARCHI_API_KEY=your_api_key
+GARCHI_SPACE_UID=your_space_uid
+```
+
+Your API key is in the Garchi CMS dashboard under Settings → API Keys.
+
+These are server-side variables — no `NEXT_PUBLIC_` prefix. Content is fetched
+in server components, so the key never reaches the browser.
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` to see the example page rendering live content.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Let an agent build the content
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Garchi CMS ships an MCP server, so an AI agent can create and edit content directly
+— pages, section trees, structured data, images — while this starter kit
+renders it.
 
-## Learn More
+Add the server to your MCP client (Claude Desktop, Claude Code, Cursor):
 
-To learn more about Next.js, take a look at the following resources:
+```json
+{
+  "mcpServers": {
+    "GarchiCMS": {
+      "url": "https://garchi.co.uk/mcp-oauth"
+    }
+  }
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Then try: *"Run prerequisites for my Garchi space, then create an about page
+with a hero and three feature sections."* Refresh your Next.js app and it's
+there.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Links
 
-## Deploy on Vercel
+- [Documentation](https://garchi.co.uk/documentation)
+- [Next.js usage guide](https://garchi.co.uk/documentation/1.0/usage/next-app-router)
+- [API reference](https://garchi.co.uk/docs)
+- Starter kits for [Laravel](https://github.com/lumenharbor/garchi-laravel-starter-kit) and [Nuxt](https://github.com/lumenharbor/garchi-nuxt-starter-kit)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Licence
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-
-
-# Using this repo
-
-This repo is a starter kit and it is meant to be used for a new project. In case you want to integrate [Garchi CMS](https://garchi.co.uk) in your existing project, you can always use this repo as a reference to do so.
-
-To begin with provide your API key inside .env file.
-
-Checkout /utils/garchi.ts for helper functions.
-
-An example page component could be found at app/garchidemopage/page.tsx
+MIT
